@@ -2,8 +2,8 @@ version: '3.8'
 services:
   server:
     build:
-      context: ./celery-app
-      dockerfile: server.dockerfile
+      context: .
+      dockerfile: Dockerfile.server
     depends_on:
       - worker
       - dashboard
@@ -20,8 +20,8 @@ services:
         target: /root/img/
   worker:
     build:
-      context: ./celery-app
-      dockerfile: worker.dockerfile
+      context: .
+      dockerfile: Dockerfile.worker
     depends_on:
       - redis
     command:
@@ -37,8 +37,8 @@ services:
         target: /root/img/
   dashboard:
     build:
-      context: ./celery-app
-      dockerfile: worker.dockerfile
+      context: .
+      dockerfile: Dockerfile.worker
     depends_on:
       - redis
     command:
